@@ -4,10 +4,9 @@ import { MachinesState, machinesReducer } from './machines/state/machines.reduce
 
 export interface State {
   router: RouterReducerState;
-  machines: MachinesState;
+  // machines: MachinesState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  router: routerReducer,
-  machines: machinesReducer
+  router: routerReducer
 };

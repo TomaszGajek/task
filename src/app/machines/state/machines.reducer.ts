@@ -3,7 +3,7 @@ import { Machine } from '../machine.interface';
 import { MachinesActionsUnion, MachinesActionTypes } from './machines.actions';
 import { createSelector } from '@ngrx/store';
 
-export type MachinesState = EntityState<Machine>;
+export interface MachinesState extends EntityState<Machine> {}
 
 export const machinesAdapter: EntityAdapter<Machine> = createEntityAdapter<Machine>();
 

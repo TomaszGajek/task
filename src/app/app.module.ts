@@ -36,7 +36,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     StoreModule.forRoot(reducers),
     StoreRouterConnectingModule.forRoot(),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([MachinesEffects])
+    EffectsModule.forRoot([])
   ],
   providers: [MachinesStatusService, MachinesApiService],
   bootstrap: [AppComponent]

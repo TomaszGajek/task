@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MachineStatusFromWebSocket } from '../machine.interface';
-import { scan, tap } from 'rxjs/operators';
 import { Socket } from 'ng-socket-io';
 
 @Injectable()
