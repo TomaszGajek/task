@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/modules/shared.module';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { SandboxModule } from './sandbox/sandbox.module';
+import { MachinesStatusService } from './machines/services/machines-status.service';
+import { MachinesApiService } from './machines/services/machines-api.service';
+import { MachinesEffects } from './machines/state/machines.effects';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -33,12 +36,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     StoreModule.forRoot(reducers),
     StoreRouterConnectingModule.forRoot(),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-
-    // if you decide to use Effects from Ngrx...
-    EffectsModule.forRoot([
-      // ...list them here
-    ])
+    EffectsModule.forRoot([MachinesEffects])
   ],
+  providers: [MachinesStatusService, MachinesApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
