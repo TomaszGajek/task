@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Machine, MachineApiResponse, MachineStatusFromWebSocket } from '../machine.interface';
+import { Machine, MachineApiResponse, MachineStatusFromWebSocket } from '../models/machine.interface';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { MachinesAdapterService } from './machines-adapter.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MachinesApiService {
   constructor(private httpClient: HttpClient, private machineAdapter: MachinesAdapterService) {}
 

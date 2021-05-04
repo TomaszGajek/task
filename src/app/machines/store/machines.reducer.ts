@@ -1,5 +1,5 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { Machine, MachineSavedStatus } from '../machine.interface';
+import { Machine, MachineSavedStatus } from '../models/machine.interface';
 import { MachinesActionsUnion, MachinesActionTypes } from './machines.actions';
 
 export interface MachinesState extends EntityState<Machine> {}

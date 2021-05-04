@@ -1,4 +1,4 @@
-import { uuid } from '../shared/interfaces/uuid.interface';
+import { uuid } from '../../shared/interfaces/uuid.interface';
 
 export enum MachineStatus {
   ON = 'on',

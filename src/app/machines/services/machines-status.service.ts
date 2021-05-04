@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MachineStatusFromWebSocket } from '../machine.interface';
+import { MachineStatusFromWebSocket } from '../models/machine.interface';
 import { Socket } from 'ng-socket-io';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MachinesStatusService {
   constructor(private socket: Socket) {}
 

@@ -5,7 +5,7 @@ import { RequestMachine, UpdateMachine } from './store/machines.actions';
 import { State } from '../state';
 import { selectAllMachines, selectMachinesIds } from './store/machines.selectors';
 import { Observable, Subject } from 'rxjs';
-import { Machine, MachineStatusFromWebSocket } from './machine.interface';
+import { Machine, MachineStatusFromWebSocket } from './models/machine.interface';
 import { takeUntil, withLatestFrom } from 'rxjs/operators';
 
 @Component({

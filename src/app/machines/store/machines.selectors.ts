@@ -1,7 +1,7 @@
 import { machinesAdapter, MachinesState } from './machines.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromRoot from '../../state';
-import { Machine } from '../machine.interface';
+import { Machine } from '../models/machine.interface';
 
 const { selectIds, selectEntities, selectAll, selectTotal } = machinesAdapter.getSelectors();
 

@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { MachinesEffects } from './store/machines.effects';
 import { StoreModule } from '@ngrx/store';
 import { machinesReducer } from './store/machines.reducer';
+import { StatusHighlightDirective } from './directives/status-highlight.directive';
 
 @NgModule({
   imports: [
@@ -14,8 +15,8 @@ import { machinesReducer } from './store/machines.reducer';
     StoreModule.forFeature('machines', machinesReducer),
     EffectsModule.forFeature([MachinesEffects])
   ],
-  declarations: [MachinesComponent, MachineComponent, MachineStatusComponent],
-  exports: [MachinesComponent, MachineStatusComponent],
+  declarations: [MachinesComponent, MachineComponent, MachineStatusComponent, StatusHighlightDirective],
+  exports: [MachinesComponent, MachineStatusComponent, StatusHighlightDirective],
   providers: []
 })
 export class MachinesModule {}

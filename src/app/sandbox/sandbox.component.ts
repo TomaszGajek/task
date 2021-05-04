@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Socket } from 'ng-socket-io';
-import { MachineStatusFromWebSocket, Machine } from '../machines/machine.interface';
+import { MachineStatusFromWebSocket, Machine } from '../machines/models/machine.interface';
 import { Observable } from 'rxjs';
 import { scan, take, tap } from 'rxjs/operators';
 

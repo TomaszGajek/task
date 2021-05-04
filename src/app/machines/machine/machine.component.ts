@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { State } from '../../state';
 import { getSelectedMachine } from '../store/machines.selectors';
 import { Observable } from 'rxjs';
-import { Machine } from '../machine.interface';
+import { Machine } from '../models/machine.interface';
 
 @Component({
   selector: 'app-machine',

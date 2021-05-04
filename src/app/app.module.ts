@@ -15,9 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/modules/shared.module';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { SandboxModule } from './sandbox/sandbox.module';
-import { MachinesStatusService } from './machines/services/machines-status.service';
-import { MachinesApiService } from './machines/services/machines-api.service';
-import { MachinesAdapterService } from './machines/services/machines-adapter.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -38,12 +35,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([])
   ],
-  providers: [
-    MachinesStatusService,
-    MachinesApiService,
-    MachinesAdapterService,
-    { provide: RouterStateSerializer, useClass: CustomSerializer }
-  ],
+  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
