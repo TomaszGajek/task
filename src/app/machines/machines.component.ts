@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MachinesStatusService } from './services/machines-status.service';
 import { select, Store } from '@ngrx/store';
-import { State } from '../state';
+import { State } from '../store/state';
 import { selectAllMachines } from './store/machines.selectors';
 import { Observable, Subscription } from 'rxjs';
 import { Machine } from './models/machine.interface';

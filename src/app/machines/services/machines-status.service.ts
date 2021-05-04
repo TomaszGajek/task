@@ -4,7 +4,7 @@ import { MachineStatusFromWebSocket } from '../models/machine.interface';
 import { Socket } from 'ng-socket-io';
 import { select, Store } from '@ngrx/store';
 import { selectMachinesIds } from '../store/machines.selectors';
-import { State } from '../../state';
+import { State } from '../../store/state';
 import { tap, withLatestFrom } from 'rxjs/operators';
 import { RequestMachine, UpdateMachine } from '../store/machines.actions';
 

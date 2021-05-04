@@ -8,15 +8,18 @@ import { MachinesEffects } from './store/machines.effects';
 import { StoreModule } from '@ngrx/store';
 import { machinesReducer } from './store/machines.reducer';
 import { StatusHighlightDirective } from './directives/status-highlight.directive';
+import { Features } from '../core/models/features.enum';
+
+const sharedImportsExports = [MachinesComponent, MachineComponent, MachineStatusComponent, StatusHighlightDirective];
 
 @NgModule({
   imports: [
     SharedModule,
-    StoreModule.forFeature('machines', machinesReducer),
+    StoreModule.forFeature(Features.Machines, machinesReducer),
     EffectsModule.forFeature([MachinesEffects])
   ],
-  declarations: [MachinesComponent, MachineComponent, MachineStatusComponent, StatusHighlightDirective],
-  exports: [MachinesComponent, MachineStatusComponent, StatusHighlightDirective],
+  declarations: sharedImportsExports,
+  exports: sharedImportsExports,
   providers: []
 })
 export class MachinesModule {}

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { State } from '../../state';
+import { State } from '../../store/state';
 import { getSelectedMachine } from '../store/machines.selectors';
 import { Observable, Subscription } from 'rxjs';
 import { Machine } from '../models/machine.interface';

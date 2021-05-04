@@ -1,11 +1,13 @@
-import { machinesAdapter, MachinesState } from './machines.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromRoot from '../../state';
+
+import * as fromRoot from '../../store/state';
+import * as fromMachines from './machines.state';
+
 import { Machine } from '../models/machine.interface';
 
-const { selectIds, selectEntities, selectAll, selectTotal } = machinesAdapter.getSelectors();
+const { selectIds, selectEntities, selectAll } = fromMachines.machinesAdapter.getSelectors();
 
-export const selectMachinesState = createFeatureSelector<MachinesState>('machines');
+export const selectMachinesState = createFeatureSelector<fromMachines.MachinesState>('machines');
 
 export const selectAllMachines = createSelector(selectMachinesState, selectAll);
 
