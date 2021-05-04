@@ -1,43 +1,18 @@
-<mat-card>
+<mat-card *ngIf="selectedMachine$ | async as selectedMachine">
   <mat-card-title>
-    Some machine name
+    {{ selectedMachine.name }}
   </mat-card-title>
-
   <mat-card-content>
     <dl>
       <dt class="title">Current status:</dt>
       <dd>
-        <app-machine-status [status]="'on'"></app-machine-status>
+        <app-machine-status [status]="selectedMachine.currentStatus"></app-machine-status>
       </dd>
-
-      <!-- update the real number of statuses between parenthesis -->
-      <dt class="title">Statuses (6)</dt>
-
-      <!-- display all the status here -->
+      <dt class="title">Statuses ({{ selectedMachine.statuses.length }})</dt>
       <dd>
-        <div>
-          <app-machine-status [status]="'on'"></app-machine-status>
-          10:15:00 AM
-        </div>
-        <div>
-          <app-machine-status [status]="'off'"></app-machine-status>
-          10:16:10 AM
-        </div>
-        <div>
-          <app-machine-status [status]="'on'"></app-machine-status>
-          10:16:50 AM
-        </div>
-        <div>
-          <app-machine-status [status]="'off'"></app-machine-status>
-          10:17:20 AM
-        </div>
-        <div>
-          <app-machine-status [status]="'on'"></app-machine-status>
-          10:17:45 AM
-        </div>
-        <div>
-          <app-machine-status [status]="'off'"></app-machine-status>
-          10:18:00 AM
+        <div *ngFor="let status of selectedMachine.statuses">
+          <app-machine-status [status]="status.status"></app-machine-status>
+          <span>{{status.date | date:'h:mm:ss a' }}</span>
         </div>
       </dd>
     </dl>
