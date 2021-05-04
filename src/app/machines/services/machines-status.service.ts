@@ -7,7 +7,7 @@ import { Socket } from 'ng-socket-io';
 export class MachinesStatusService {
   constructor(private socket: Socket) {}
 
-  public listenOnMachinesStatusChanges(): Observable<MachineStatusFromWebSocket> {
+  public listenOnMachinesStatusChanges(): Observable<any> {
     return this.socket.fromEvent<MachineStatusFromWebSocket>('MACHINE_STATUS_CHANGES');
   }
 }

@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import { uuid } from '../../shared/interfaces/uuid.interface';
 import { Observable } from 'rxjs';
-import { Machine } from '../machine.interface';
+import { Machine, MachineApiResponse, MachineStatusFromWebSocket } from '../machine.interface';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { MachinesAdapterService } from './machines-adapter.service';
 
 @Injectable()
 export class MachinesApiService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private machineAdapter: MachinesAdapterService) {}
 
-  getMachineDataById(id: uuid): Observable<Machine> {
-    return this.httpClient.get<Machine>(`http://localhost:3000/machines/${id}`);
+  getMachineData(machineStatus: MachineStatusFromWebSocket): Observable<Machine> {
+    return this.httpClient
+      .get<MachineApiResponse>(`http://localhost:3000/machines/${machineStatus.id}`)
+      .pipe(map(machine => this.machineAdapter.adapt(machine, machineStatus.status)));
   }
 }

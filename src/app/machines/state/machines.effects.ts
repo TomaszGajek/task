@@ -9,7 +9,7 @@ export class MachinesEffects {
   @Effect()
   addMachine$ = this.actions$.pipe(
     ofType<RequestMachine>(MachinesActionTypes.RequestMachine),
-    mergeMap(action => this.machinesApiService.getMachineDataById(action.payload.id)),
+    mergeMap(action => this.machinesApiService.getMachineData(action.payload.machineStatus)),
     map(machine => new AddMachine({ machine }))
   );
 

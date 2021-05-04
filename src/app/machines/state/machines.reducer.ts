@@ -1,7 +1,6 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Machine } from '../machine.interface';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { Machine, MachineSavedStatus } from '../machine.interface';
 import { MachinesActionsUnion, MachinesActionTypes } from './machines.actions';
-import { createSelector } from '@ngrx/store';
 
 export interface MachinesState extends EntityState<Machine> {}
 
@@ -13,6 +12,23 @@ export function machinesReducer(state: MachinesState = initialState, action: Mac
   switch (action.type) {
     case MachinesActionTypes.AddMachine:
       return machinesAdapter.addOne(action.payload.machine, state);
+
+    case MachinesActionTypes.UpdateMachine:
+      const statuses: MachineSavedStatus[] = [
+        ...state.entities[action.payload.id].statuses,
+        { date: new Date(), status: action.payload.changes.currentStatus }
+      ];
+
+      return machinesAdapter.updateOne(
+        {
+          id: action.payload.id,
+          changes: {
+            currentStatus: action.payload.changes.currentStatus,
+            statuses
+          }
+        },
+        state
+      );
 
     default:
       return state;

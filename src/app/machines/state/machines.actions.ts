@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Machine } from '../machine.interface';
-import { uuid } from '../../shared/interfaces/uuid.interface';
+import { Machine, MachineStatusFromWebSocket } from '../machine.interface';
 
 export enum MachinesActionTypes {
   RequestMachine = '[Machines] Request Machine',
@@ -8,10 +7,9 @@ export enum MachinesActionTypes {
   UpdateMachine = '[Machines] Update Machine'
 }
 
-// here's an example of an action that you can reuse to avoid too much boilerplate
 export class RequestMachine implements Action {
   readonly type = MachinesActionTypes.RequestMachine;
-  constructor(public payload: { id: uuid }) {}
+  constructor(public payload: { machineStatus: MachineStatusFromWebSocket }) {}
 }
 
 export class AddMachine implements Action {
@@ -22,7 +20,7 @@ export class AddMachine implements Action {
 export class UpdateMachine implements Action {
   readonly type = MachinesActionTypes.UpdateMachine;
 
-  constructor(public payload: undefined) {}
+  constructor(public payload: { id: string; changes: { currentStatus } }) {}
 }
 
 export type MachinesActionsUnion = RequestMachine | AddMachine | UpdateMachine;

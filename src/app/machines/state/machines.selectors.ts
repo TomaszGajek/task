@@ -8,3 +8,5 @@ export const selectMachinesState = createFeatureSelector<MachinesState>('machine
 export const selectAllMachines = createSelector(selectMachinesState, selectAll);
 
 export const selectMachinesEntities = createSelector(selectMachinesState, selectEntities);
+
+export const selectMachinesIds = createSelector(selectMachinesState, selectIds);

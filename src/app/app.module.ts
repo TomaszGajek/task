@@ -17,7 +17,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { SandboxModule } from './sandbox/sandbox.module';
 import { MachinesStatusService } from './machines/services/machines-status.service';
 import { MachinesApiService } from './machines/services/machines-api.service';
-import { MachinesEffects } from './machines/state/machines.effects';
+import { MachinesAdapterService } from './machines/services/machines-adapter.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -38,7 +38,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([])
   ],
-  providers: [MachinesStatusService, MachinesApiService],
+  providers: [MachinesStatusService, MachinesApiService, MachinesAdapterService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
