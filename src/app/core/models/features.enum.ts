@@ -1,3 +1,4 @@
 export enum Features {
-  Machines = 'machines'
+  Machines = 'machines',
+  Router = 'router'
 }

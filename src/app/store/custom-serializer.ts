@@ -8,8 +8,9 @@ export class CustomSerializer implements fromRouter.RouterStateSerializer<Router
     const { queryParams } = routerState.root;
 
     let state: ActivatedRouteSnapshot = routerState.root;
-    while (state.children[0]) {
-      state = state.children[0];
+
+    while (state.firstChild) {
+      state = state.firstChild;
     }
 
     const { params } = state;

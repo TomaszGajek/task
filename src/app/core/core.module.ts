@@ -14,7 +14,7 @@ import { SandboxModule } from '../sandbox/sandbox.module';
 import { CustomSerializer } from '../store/custom-serializer';
 import { ENV } from '../app.config';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
 
 @NgModule({
   imports: [

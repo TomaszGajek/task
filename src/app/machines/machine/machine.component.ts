@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { State } from '../../store/state';
 import { getSelectedMachine } from '../store/machines.selectors';
-import { Observable, Subscription } from 'rxjs';
-import { Machine } from '../models/machine.interface';
+import { Observable, Subject } from 'rxjs';
+import { Machine } from '../../core/models/machine.interface';
 import { MachinesStatusService } from '../services/machines-status.service';
+import { takeUntil } from 'rxjs/operators';
+import { MachinesState } from '../store/machines.state';
 
 @Component({
   selector: 'app-machine',
@@ -14,15 +15,19 @@ import { MachinesStatusService } from '../services/machines-status.service';
 export class MachineComponent implements OnInit, OnDestroy {
   public selectedMachine$: Observable<Machine> = this.store.pipe(select(getSelectedMachine));
 
-  private subscription: Subscription;
+  private subGuard$: Subject<void> = new Subject<void>();
 
-  constructor(private store: Store<State>, private machinesStatusService: MachinesStatusService) {}
+  constructor(private store: Store<MachinesState>, private machinesStatusService: MachinesStatusService) {}
 
   ngOnInit() {
-    this.subscription = this.machinesStatusService.handleMachinesStatusChanges().subscribe();
+    this.machinesStatusService
+      .handleMachinesStatusChanges()
+      .pipe(takeUntil(this.subGuard$))
+      .subscribe();
   }
 
   public ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subGuard$.next();
+    this.subGuard$.unsubscribe();
   }
 }

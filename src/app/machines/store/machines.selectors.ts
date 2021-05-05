@@ -1,9 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { Machine } from '../../core/models/machine.interface';
 
 import * as fromRoot from '../../store/state';
 import * as fromMachines from './machines.state';
-
-import { Machine } from '../models/machine.interface';
 
 const { selectIds, selectEntities, selectAll } = fromMachines.machinesAdapter.getSelectors();
 

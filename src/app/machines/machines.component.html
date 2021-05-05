@@ -1,5 +1,5 @@
 <mat-list *ngIf="machines$ | async as machines">
-  <mat-list-item *ngFor="let machine of machines">
+  <mat-list-item *ngFor="let machine of machines; trackBy: trackById">
     <a mat-stroked-button routerLink="{{machine.id}}" matBadge="{{machine.statuses.length}}" matBadgePosition="after" matBadgeColor="accent">
       {{machine.name}}
     </a>

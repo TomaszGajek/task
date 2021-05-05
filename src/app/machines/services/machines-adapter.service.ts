@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Machine, MachineApiResponse, MachineSavedStatus, MachineStatus } from '../models/machine.interface';
+import { Machine, MachineApiResponse, MachineSavedStatus, MachineStatus } from '../../core/models/machine.interface';
 
 @Injectable({
   providedIn: 'root'

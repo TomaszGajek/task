@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { MachineStatus } from '../models/machine.interface';
+import { MachineStatus } from '../../core/models/machine.interface';
 
 @Component({
   selector: 'app-machine-status',

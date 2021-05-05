@@ -1,4 +1,4 @@
-import { MachineSavedStatus } from '../models/machine.interface';
+import { MachineSavedStatus } from '../../core/models/machine.interface';
 import { MachinesActionsUnion, MachinesActionTypes } from './machines.actions';
 import { initialState, machinesAdapter, MachinesState } from './machines.state';
 

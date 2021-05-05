@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Machine, MachineStatusFromWebSocket } from '../models/machine.interface';
+import { Machine, MachineStatusFromWebSocket } from '../../core/models/machine.interface';
 
 export enum MachinesActionTypes {
   RequestMachine = '[Machines] Request Machine',
